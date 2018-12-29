@@ -11,14 +11,11 @@
   </head>
 
   <body>
-
     <div id="app">
-      <input v-model="fname" ><br>
-      <input v-model="lname" ><br>
-      <input v-model="test"><br>
-      {{fname +' ' + lname +' '+ Date.now() }}<br>
-      {{fullname}}
-    </div>
+      <div @click="liked = ! liked" :class="className">{{likes}} likes </div>
+
+
+   </div>
   </body>
 
 <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
@@ -26,20 +23,35 @@
 	var app = new Vue({
 		el: '#app',
 		data: {
-   fname:"asmaa",
-   lname:"madi",
-   test:"1"
+   likes:5,
+   liked:true,
+ 
 		
 		},
 		computed:{
-	     fullname:function()
+	     className:function()
        {
-          return this.fname + " " + this.lname +" "+Date.now();
+          return (this.liked)?"like":" ";
        }
 
-		}
+		},
+    watch:{
+      liked: function(value)
+      {
+        if(value)
+          this.likes ++;
+        else
+          this.likes --;
+      }
+    }
 		// template:'<h1>{{message}}</h1>'
 	});
 </script>
 
+<style type="text/css">
+  .like{
+    color: red; 
+    font-weight: bold; 
+  }
+</style>
 </html>
