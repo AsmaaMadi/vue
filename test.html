@@ -13,7 +13,10 @@
   <body>
 
     <div id="app">
-      {{fname + " " + lname}}<br>
+      <input v-model="fname" ><br>
+      <input v-model="lname" ><br>
+      <input v-model="test"><br>
+      {{fname +' ' + lname +' '+ Date.now() }}<br>
       {{fullname}}
     </div>
   </body>
@@ -24,13 +27,14 @@
 		el: '#app',
 		data: {
    fname:"asmaa",
-   lname:"madi"
+   lname:"madi",
+   test:"1"
 		
 		},
 		computed:{
 	     fullname:function()
        {
-          return this.fname + " " + this.lname
+          return this.fname + " " + this.lname +" "+Date.now();
        }
 
 		}
