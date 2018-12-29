@@ -13,24 +13,11 @@
   <body>
 
     <div id="app">
-      <div >{{counter}}</div>
-      <div v-once>{{counter}}</div>
-      <button @click="counter++;">Add</button>
-      <div @mouseover.capture="r1" style="background: blue;width: 200px;height: 200px">
-        <div @mouseover="r2" style="background: red;width: 100px;height: 100px">
-        </div>
-      </div>
 
+      <input v-model="x">
+      <div >{{x}}</div>
+      
 
-      <form @submit.prevent="subprev">
-        <input @keyup="handlekey" type="text" name="name">
-        <button type="submit">submit</button>
-      </form>
-      <button @click="showmsg('Hello',$event)">Show</button>
-      <button @click="showm">Show</button>
-   {{x}}<br>
-   {{y}}<br>
-   {{type}}
     </div>
   </body>
 
@@ -39,38 +26,12 @@
 	var app = new Vue({
 		el: '#app',
 		data: {
-      x:0,
-      y:0,
-      type:'',
-      counter:0
+    
+      x:""
 		
 		},
 		methods:{
-		
-			showmsg: function(m,event){
-        this.x= event.x;
-        this.y=event.y;
-        this.type= event.type;
-				alert(m);
-			},
-      showm: function(event){
-        console.log(event);
-      },
-      subprev:function (event)
-      {
-
-      },
-       handlekey:function (event)
-      {
-console.log(event);
-      },
-      r1:function()
-      {
-        console.log('hover r1');
-      },
-      r2:function(){
-        console.log('hover r2');
-      }
+	
 
 		}
 		// template:'<h1>{{message}}</h1>'
