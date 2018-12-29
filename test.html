@@ -13,12 +13,8 @@
   <body>
 
     <div id="app">
-
-      <input v-model="x">
-      <div >{{x}}</div>
-      <button @click="x='x was changed'">click</button>
-      
-
+      {{fname + " " + lname}}<br>
+      {{fullname}}
     </div>
   </body>
 
@@ -27,12 +23,15 @@
 	var app = new Vue({
 		el: '#app',
 		data: {
-    
-      x:""
+   fname:"asmaa",
+   lname:"madi"
 		
 		},
-		methods:{
-	
+		computed:{
+	     fullname:function()
+       {
+          return this.fname + " " + this.lname
+       }
 
 		}
 		// template:'<h1>{{message}}</h1>'
