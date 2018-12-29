@@ -12,12 +12,14 @@
 
   <body>
 
-
     <div id="app">
+      <div >{{counter}}</div>
+      <div v-once>{{counter}}</div>
+      <button @click="counter++;">Add</button>
       <div @mouseover.capture="r1" style="background: blue;width: 200px;height: 200px">
         <div @mouseover="r2" style="background: red;width: 100px;height: 100px">
+        </div>
       </div>
-    </div>
 
 
       <form @submit.prevent="subprev">
@@ -39,7 +41,8 @@
 		data: {
       x:0,
       y:0,
-      type:''
+      type:'',
+      counter:0
 		
 		},
 		methods:{
