@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.JS Tutorial</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div id="app">
+    	<h1 v-bind:id="idmsg" >{{message}}</h1>
+      <br>
+      <div v-html="msg"></div><br>
+      <ul>
+
+      	<li v-for="item in list">{{item}}
+         <button @click="deleteItem(item)">-</button>
+      	</li>
+
+      	<li v-if="newItem">{{newItem}}</li>
+      </ul>
+<div>{{x+y}}</div>
+      <input v-model="newItem">
+      <button @click="AddItem(newItem)">Add</button>
+<br>
+      <button @click="showmsg('Hello')"></button>
+      <button @click="counter++">{{counter}}</button>
+    </div>
+  </body>
+
+<script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message : 'Hello Vue Gies',
+			msg : '<h1> Hi </h1>',
+			list: ['orange','apple','cherries'],
+			newItem:'',
+			idmsg:'idofmessage',
+			x:5,
+			y:6,
+			counter:0
+		},
+		methods:{
+			deleteItem: function(item){
+				var index =this.list.indexOf(item);
+				this.list.splice(index,1);
+			},
+			AddItem: function(newItem)
+			{
+               this.list.push(newItem);
+               this.newItem = "";
+			},
+			showmsg: function(m){
+				alert(m);
+			}
+
+		}
+		// template:'<h1>{{message}}</h1>'
+	});
+</script>
+
+</html>

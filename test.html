@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.JS Tutorial</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+
+    <div id="app">
+      <div @mouseover.capture="r1" style="background: blue;width: 200px;height: 200px">
+        <div @mouseover="r2" style="background: red;width: 100px;height: 100px">
+      </div>
+    </div>
+
+
+      <form @submit.prevent="subprev">
+        <input @keyup="handlekey" type="text" name="name">
+        <button type="submit">submit</button>
+      </form>
+      <button @click="showmsg('Hello',$event)">Show</button>
+      <button @click="showm">Show</button>
+   {{x}}<br>
+   {{y}}<br>
+   {{type}}
+    </div>
+  </body>
+
+<script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {
+      x:0,
+      y:0,
+      type:''
+		
+		},
+		methods:{
+		
+			showmsg: function(m,event){
+        this.x= event.x;
+        this.y=event.y;
+        this.type= event.type;
+				alert(m);
+			},
+      showm: function(event){
+        console.log(event);
+      },
+      subprev:function (event)
+      {
+
+      },
+       handlekey:function (event)
+      {
+console.log(event);
+      },
+      r1:function()
+      {
+        console.log('hover r1');
+      },
+      r2:function(){
+        console.log('hover r2');
+      }
+
+		}
+		// template:'<h1>{{message}}</h1>'
+	});
+</script>
+
+</html>
