@@ -12,7 +12,7 @@
 
   <body>
     <div id="app">
-      <div @click="liked = ! liked" :class="className">{{likes}} likes </div>
+      <div @click="active = ! active" :class="{blue:active,red:!active}">{{active}} </div>
 
 
    </div>
@@ -23,33 +23,30 @@
 	var app = new Vue({
 		el: '#app',
 		data: {
-   likes:5,
-   liked:true,
+   active:true,
  
 		
 		},
 		computed:{
 	     className:function()
        {
-          return (this.liked)?"like":" ";
+          
        }
 
 		},
     watch:{
-      liked: function(value)
-      {
-        if(value)
-          this.likes ++;
-        else
-          this.likes --;
-      }
+     
     }
 		// template:'<h1>{{message}}</h1>'
 	});
 </script>
 
 <style type="text/css">
-  .like{
+  .blue{
+    color: blue; 
+    font-weight: bold; 
+  }
+   .red{
     color: red; 
     font-weight: bold; 
   }
